@@ -1,0 +1,20 @@
+Sub ReplaceMACaddress()
+    Dim iStart As Integer
+    Dim iEnd As Integer
+    Dim sData1 As String
+    Dim sData2 As String
+    
+    Dim iRow As Integer
+    iRow = 1
+    iStart = 1
+    iEnd = 600
+  
+        For iRow = iStart To iEnd
+
+            sData1 = ActiveSheet.Cells(iRow, 5).Value
+
+            If sData1 <> "" Then
+                ActiveSheet.Cells(iRow, 7).Value = Replace(sData1, "-", "")
+            End If
+        Next iRow
+End Sub

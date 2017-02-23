@@ -1,0 +1,26 @@
+Sub DeleteBlank()
+    Dim iStart As Integer
+    Dim iEnd As Integer
+    Dim sData1 As String
+    Dim sData2 As String
+    
+    Dim iRow As Integer
+    iRow = 1
+    iStart = 1
+    iEnd = 1335
+  
+        For iRow = iStart To iEnd
+        
+           ActiveSheet.Cells(iRow, 1).Select
+            sData1 = ActiveCell.Value
+            ActiveSheet.Cells(iRow, 2).Select
+            sData2 = ActiveCell.Value
+            
+           If sData1 = "" And sData2 = "" Then
+            ActiveSheet.Rows(iRow).EntireRow.Delete
+            iRow = iRow - 1
+            iEnd = iEnd - 1
+            End If
+        Next iRow
+
+End Sub

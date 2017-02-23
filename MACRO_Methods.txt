@@ -1,0 +1,21 @@
+Copy sheet:
+Sheets("Q1").Copy After:=Sheets(Sheets.Count)
+
+
+Activate sheet:
+Worksheets("Sheet Name").Activate
+
+
+
+Value in a cell:
+ActiveSheet.Cells(iRow, iCol).Value
+
+
+Copy the entire row:
+ActiveSheet.Rows(3).EntireRow.Copy
+
+
+Paste the row:
+ActiveSheet.Rows(iRow).EntireRow.Insert
+
+

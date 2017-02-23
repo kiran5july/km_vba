@@ -1,0 +1,27 @@
+    Dim iStart As Integer
+    Dim iEnd As Integer
+    Dim sData1 As String
+    Dim sData2 As String
+    
+    Dim iRow As Integer
+    iRow = 1
+    iStart = 1
+    iEnd = 1261
+  
+        For iRow = iStart To iEnd
+        
+           ActiveSheet.Cells(iRow, 1).Select
+            sData1 = ActiveCell.Value
+                        
+            If InStr(sData1, "@") > 0 Then
+                ActiveSheet.Cells(iRow, 2).Select
+                ActiveCell.Value = Left$(sData1, InStr(sData1, "@") - 1)
+           
+                ActiveSheet.Cells(iRow, 3).Select
+                ActiveCell.Value = Right$(sData1, Len(sData1) - InStr(sData1, "@"))
+            Else
+            
+                ActiveSheet.Cells(iRow, 2).Select
+                ActiveCell.Value = sData1
+            End If
+        Next iRow

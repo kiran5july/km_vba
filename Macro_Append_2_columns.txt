@@ -1,0 +1,17 @@
+Sub k1()
+Dim iStart As Integer
+Dim iEnd As Integer
+iStart = 1
+iEnd = 43
+Dim sData1 As String
+Dim sData2 As String
+Dim iRow As Integer
+
+For iRow = iStart To iEnd
+    
+    ActiveSheet.Cells(iRow, 3).Select
+    sData2 = ActiveCell.Value
+    ActiveSheet.Cells(iRow, 2).Select
+    ActiveCell.Value = ActiveCell.Value & ", " & sData2
+Next
+End Sub

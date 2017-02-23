@@ -1,0 +1,34 @@
+Sub DataTest()
+
+Dim iStart As Integer
+Dim iEnd As Integer
+
+Dim iCol1 As Integer
+Dim iCol2 As Integer
+
+iStart = 3
+iEnd = 227
+
+
+iCol1 = 6
+iCol2 = 14
+
+Dim sMismatchedCells As String
+
+Dim iRow As Integer
+
+For iRow = iStart To iEnd
+        
+    If (Str(ActiveSheet.Cells(iRow, iCol1).Value) <> Str(ActiveSheet.Cells(iRow, iCol2).Value)) Then
+
+        sMismatchedCells = sMismatchedCells + "[" + Str(iRow) + "];"
+    End If
+Next
+
+MsgBox (sMismatchedCells)
+
+
+End Sub
+
+
+

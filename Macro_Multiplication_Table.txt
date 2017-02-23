@@ -1,0 +1,28 @@
+Sub Mulptiplication_Table()
+    Range("A1").Select
+    ActiveCell.FormulaR1C1 = "1"
+    Range("B1").Select
+    ActiveCell.FormulaR1C1 = "2"
+    Range("A1:B1").Select
+    Selection.AutoFill Destination:=Range("A1:J1"), Type:=xlFillDefault
+
+    Range("A2").Select
+    ActiveCell.FormulaR1C1 = "2"
+    Range("A1:A2").Select
+    Selection.AutoFill Destination:=Range("A1:A10"), Type:=xlFillDefault
+    
+
+    Range("B2").Select
+    ActiveCell.FormulaR1C1 = "=R[-1]C*RC[-1]"
+    Range("B2").Select
+    Selection.AutoFill Destination:=Range("B2:C2"), Type:=xlFillDefault
+    
+
+    Range("B2").Select
+    ActiveCell.FormulaR1C1 = "=R1C*RC1"
+    Range("B2").Select
+    Selection.AutoFill Destination:=Range("B2:J2"), Type:=xlFillDefault
+    Range("B2:J2").Select
+    Selection.AutoFill Destination:=Range("B2:J10"), Type:=xlFillDefault
+    Range("B2:J10").Select
+End Sub

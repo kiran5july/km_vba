@@ -1,0 +1,64 @@
+Private Sub cmdGen_Click()
+    Dim wsSheet As Worksheet
+    Dim sSheetName As String
+    Dim iCtr As Integer
+    Dim sIBX As String
+    Dim sProd As String
+    Dim sAvail As String
+    Dim bRunLoop As Boolean
+    Dim iNumOfIBX As Integer
+    Dim iRow As Integer
+    Dim ibxVal As String
+    ' Initillize variables
+    
+    iCtr = 3
+    iNumOfIBX = 0
+    bRunLoop = True
+    Set wsSheet = ActiveWorkbook.Sheets(2)
+    
+    ' Create the csv import file
+    
+    Set fs = CreateObject("Scripting.FileSystemObject")
+    Set file = fs.CreateTextFile(ActiveWorkbook.Path + "\Product_IBX_Avail_Import File.csv", True)
+    
+    ' Write the header line to the file
+    
+    file.WriteLine ("Adjustment Group Name,EQX IBX Name,Effective End Date,Effective Start Date,Product,Product Class,Product Line,Type")
+    
+    ' Calculate the # of IBX
+    
+    While bRunLoop = True
+
+        ibxVal = wsSheet.Cells(7, iCtr)
+        
+        If ibxVal = "" Then
+            bRunLoop = False
+            iNumOfIBX = iNumOfIBX - 2
+            iCtr = 3
+        Else
+            iCtr = iCtr + 1
+            iNumOfIBX = iNumOfIBX + 1
+        End If
+    Wend
+    
+    bRunLoop = True
+    iRow = 0
+    
+    While bRunLoop = True
+        For i = 0 To iNumOfIBX
+            sIBX = wsSheet.Cells(7, iCtr + i)
+            sProd = wsSheet.Cells(8 + iRow, 2)
+            sAvail = wsSheet.Cells(8 + iRow, iCtr + i)
+            sAvail = Trim(sAvail)
+            If sAvail <> "" Then
+                file.WriteLine ("EQX Product IBX Eligibility," & sIBX & ",,," & sProd & ",,,Available")
+            End If
+        Next i
+            
+        If sProd = "" Then
+            bRunLoop = False
+        Else
+            iRow = iRow + 1
+        End If
+    Wend
+End Sub

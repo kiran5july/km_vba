@@ -1,0 +1,24 @@
+    Dim iStart As Integer
+    Dim iEnd As Integer
+    Dim sData1 As String
+    Dim iRow As Integer
+    Dim iLineCounter As Integer
+    
+    iRow = 7
+    iStart = 7
+    iEnd = 203 * 26
+  
+        For iRow = iStart To iEnd
+        
+           ActiveSheet.Cells(iRow, 1).Select
+            sData1 = ActiveCell.Value
+            
+           If sData1 <> "" Then
+            For iLineCounter = 1 To 26
+                ActiveSheet.Rows(iRow).EntireRow.Insert
+            
+                iRow = iRow + 1
+            Next iLineCounter
+            
+            End If
+        Next iRow
